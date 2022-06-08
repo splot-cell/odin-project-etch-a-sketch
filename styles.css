@@ -2,8 +2,13 @@
     display: flex;
 }
 
-.row div {
-    width: 16px;
-    height: 16px;
-    background-color: azure;
+.pixel {
+    flex: 1 1 32px;
+    height: 32px;
+    background-color: black;
+}
+
+.glow {
+    background-color: aqua;
+    filter: drop-shadow(0px 0px 10px aqua);
 }

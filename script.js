@@ -1,6 +1,7 @@
 function setUp() {
     createGrid();
     initialiseHoverEvents();
+    initialiseButtons();
 }
 
 setUp();
@@ -22,10 +23,19 @@ function createGrid(resolution = 16) {
 
 function initialiseHoverEvents() {
     const pixels = document.querySelectorAll(".pixel");
-    console.log(pixels);
     pixels.forEach(pixel => pixel.addEventListener("mouseover", addGlowClass));
 }
 
 function addGlowClass(e) {
     e.target.classList.add("glow");
+}
+
+function initialiseButtons() {
+    const reset = document.getElementById("reset");
+    reset.addEventListener("click", resetGrid);
+}
+
+function resetGrid() {
+    const pixels = document.querySelectorAll(".pixel");
+    pixels.forEach(pixel => pixel.classList.remove("glow"));
 }

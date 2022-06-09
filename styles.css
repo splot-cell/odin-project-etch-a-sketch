@@ -1,10 +1,13 @@
+#grid {
+    height: 720px;
+    width: 720px;
+}
+
 .row {
     display: flex;
 }
 
 .pixel {
-    flex: 1 1 32px;
-    height: 32px;
     background-color: black;
 }
 

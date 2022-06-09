@@ -7,6 +7,8 @@ setUp();
 
 function createGrid(resolution = 16) {
     const container = document.getElementById("grid");
+    let gridSize = container.offsetWidth; // cannot use .style.width as this only returns inline styles, and the grid container width is set in an external stylesheet
+    let pixelSize = gridSize / resolution;
 
     for (let row = 0; row < resolution; row++) {
         const row = document.createElement("div");
@@ -15,6 +17,8 @@ function createGrid(resolution = 16) {
             const box = document.createElement("div");
             box.classList.add("pixel");
             box.addEventListener("mouseover", addGlowClass);
+            box.style.width = pixelSize + "px";
+            box.style.height = pixelSize + "px";
             row.appendChild(box);
         }
         container.appendChild(row);

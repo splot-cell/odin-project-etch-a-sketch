@@ -1,6 +1,5 @@
 function setUp() {
     createGrid();
-    initialiseHoverEvents();
     initialiseButtons();
 }
 
@@ -15,15 +14,11 @@ function createGrid(resolution = 16) {
         for (let col = 0; col < resolution; col++) {
             const box = document.createElement("div");
             box.classList.add("pixel");
+            box.addEventListener("mouseover", addGlowClass);
             row.appendChild(box);
         }
         container.appendChild(row);
     }
-}
-
-function initialiseHoverEvents() {
-    const pixels = document.querySelectorAll(".pixel");
-    pixels.forEach(pixel => pixel.addEventListener("mouseover", addGlowClass));
 }
 
 function addGlowClass(e) {
@@ -33,9 +28,18 @@ function addGlowClass(e) {
 function initialiseButtons() {
     const reset = document.getElementById("reset");
     reset.addEventListener("click", resetGrid);
+    const resolution = document.getElementById("resolution");
+    resolution.addEventListener("click", changeResolution);
 }
 
 function resetGrid() {
     const pixels = document.querySelectorAll(".pixel");
     pixels.forEach(pixel => pixel.classList.remove("glow"));
+}
+
+function changeResolution() {
+    const rows = document.querySelectorAll(".row");
+    rows.forEach(row => row.parentNode.removeChild(row));
+    let resolution = prompt("Enter desired resolution");
+    createGrid(resolution);
 }

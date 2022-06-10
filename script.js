@@ -1,3 +1,8 @@
+const COLOR_RED = 0;
+const COLOR_GREEN = 120;
+const COLOR_BLUE = 240;
+let g_color = COLOR_RED;
+
 function setUp() {
     createGrid();
     initialiseButtons();
@@ -34,6 +39,8 @@ function initialiseButtons() {
     reset.addEventListener("click", resetGrid);
     const resolution = document.getElementById("resolution");
     resolution.addEventListener("click", changeResolution);
+    const colorButtons = document.querySelectorAll(".color");
+    colorButtons.forEach(button => button.addEventListener("click", setHue));
 }
 
 function resetGrid() {
@@ -66,14 +73,25 @@ function changeResolution() {
 function changeColor(e) {
     let pixel = e.target;
     // addGlowClass(pixel);
-    randomGlow(pixel, 240);
+    randomGlow(pixel);
 }
 
-function randomGlow(pixel, hueRange = 0) {
+function randomGlow(pixel, hueRange = g_color) {
     let randHue = Math.floor(Math.random() * 120) - 60 + hueRange;
     let randWhite = Math.floor(Math.random() * 50);
     let randBlack = Math.floor(Math.random() * 50);
     let colorString = `hwb(${randHue} ${randWhite}% ${randBlack}%)`;
     pixel.style.backgroundColor = colorString;
     pixel.style.filter = `drop-shadow(0px 0px 10px ${colorString})`;
+}
+
+function setHue(e) {
+    let hue = e.target.id;
+    if (hue === "red") {
+        g_color = COLOR_RED;
+    } else if (hue === "green") {
+        g_color = COLOR_GREEN;
+    } else {
+        g_color = COLOR_BLUE;
+    }
 }

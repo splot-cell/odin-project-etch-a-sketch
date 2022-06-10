@@ -16,7 +16,7 @@ function createGrid(resolution = 16) {
         for (let col = 0; col < resolution; col++) {
             const box = document.createElement("div");
             box.classList.add("pixel");
-            box.addEventListener("mouseover", addGlowClass);
+            box.addEventListener("mouseover", changeColor);
             box.style.width = pixelSize + "px";
             box.style.height = pixelSize + "px";
             row.appendChild(box);
@@ -25,8 +25,8 @@ function createGrid(resolution = 16) {
     }
 }
 
-function addGlowClass(e) {
-    e.target.classList.add("glow");
+function addGlowClass(pixel) {
+    pixel.classList.add("glow");
 }
 
 function initialiseButtons() {
@@ -61,4 +61,19 @@ function changeResolution() {
             break;
         }
     }   
+}
+
+function changeColor(e) {
+    let pixel = e.target;
+    // addGlowClass(pixel);
+    randomGlow(pixel, 240);
+}
+
+function randomGlow(pixel, hueRange = 0) {
+    let randHue = Math.floor(Math.random() * 120) - 60 + hueRange;
+    let randWhite = Math.floor(Math.random() * 50);
+    let randBlack = Math.floor(Math.random() * 50);
+    let colorString = `hwb(${randHue} ${randWhite}% ${randBlack}%)`;
+    pixel.style.backgroundColor = colorString;
+    pixel.style.filter = `drop-shadow(0px 0px 10px ${colorString})`;
 }

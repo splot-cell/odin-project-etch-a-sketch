@@ -45,7 +45,10 @@ function initialiseButtons() {
 
 function resetGrid() {
     const pixels = document.querySelectorAll(".pixel");
-    pixels.forEach(pixel => pixel.classList.remove("glow"));
+    pixels.forEach(pixel => {
+        pixel.style.backgroundColor = "black";
+        pixel.style.filter = "none";
+    });
 }
 
 function clearGrid(){

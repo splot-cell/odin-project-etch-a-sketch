@@ -28,6 +28,9 @@ body {
 
 .controls {
     margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }
 
 button {
@@ -37,8 +40,21 @@ button {
     color: ghostwhite;
     font-size: 16px;
     font-family: 'Courier New', Courier, monospace;
+    height: 38px;
 }
 
 button:hover {
     background-color: gray;
+}
+
+#label {
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    color: ghostwhite;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+#colors button {
+    width: 100px;
 }

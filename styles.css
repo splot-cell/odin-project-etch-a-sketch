@@ -53,3 +53,11 @@ button:hover {
 #colors button {
     width: 100px;
 }
+
+.active {
+    background-color: darkgoldenrod;
+}
+
+.active:hover {
+    background-color: darkgoldenrod;
+}

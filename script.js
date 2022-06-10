@@ -85,6 +85,7 @@ function randomGlow(pixel, hueRange = g_color) {
 
 function setHue(e) {
     let hue = e.target.id;
+    resetActiveButton();
     if (hue === "red") {
         g_color = COLOR_RED;
     } else if (hue === "green") {
@@ -92,4 +93,10 @@ function setHue(e) {
     } else {
         g_color = COLOR_BLUE;
     }
+    e.target.classList.add("active");
+}
+
+function resetActiveButton() {
+    const colorButtons = document.querySelectorAll(".color");
+    colorButtons.forEach(button => button.classList.remove("active"));
 }

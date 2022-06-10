@@ -50,11 +50,11 @@ function changeResolution() {
     let resolution = "";
     while (true) {
         resolution = prompt("Enter desired resolution");
-        if (!Number.isInteger(Number(resolution)) || 
+        if (resolution === null) { // User presses cancel
+            break;
+        } else if (!Number.isInteger(Number(resolution)) || 
                 resolution < 1 || resolution > 100) {
             alert("Please enter an integer between 1 and 100");
-        } else if (resolution === null) { // User presses cancel
-            break;
         } else { // User has entered a valid input
             clearGrid();
             createGrid(resolution);

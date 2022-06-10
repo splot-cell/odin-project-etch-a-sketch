@@ -30,10 +30,6 @@ function createGrid(resolution = 16) {
     }
 }
 
-function addGlowClass(pixel) {
-    pixel.classList.add("glow");
-}
-
 function initialiseButtons() {
     const reset = document.getElementById("reset");
     reset.addEventListener("click", resetGrid);
@@ -75,7 +71,6 @@ function changeResolution() {
 
 function changeColor(e) {
     let pixel = e.target;
-    // addGlowClass(pixel);
     randomGlow(pixel);
 }
 
